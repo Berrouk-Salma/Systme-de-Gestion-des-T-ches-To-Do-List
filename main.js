@@ -36,7 +36,7 @@ addForm.addEventListener("submit", (event) => {
     }
     taskElement.innerHTML = `<strong>${title}</strong><br><span>${date}</span>`;
 
-    // Ajoute la tâche dans la catégorie sélectionnée
+    
     if (category === "to-do-list") {
         toDoList.appendChild(taskElement);
     } else if (category === "in-progress-list") {
@@ -45,7 +45,7 @@ addForm.addEventListener("submit", (event) => {
         doneList.appendChild(taskElement);
     }
     addForm.reset();
-    addForm.classList.add("hidden"); // Cache le formulaire après l'ajout
-    modal.classList.add("hidden"); // Cache le modal après l'ajout
+    addForm.classList.add("hidden"); 
+    modal.classList.add("hidden"); 
 });
 
