@@ -10,7 +10,7 @@
 
 <body class="bg-gray-100 p-8">
     <header class="flex justify-evenly mb-20">
-        <h2 id="task" class="px-5 py-3 bg-blue-600 text-white rounded-2xl cursor-pointer">Add Task +</h2>
+        <h2 id="addtask" class="px-5 py-3 bg-blue-600 text-white rounded-2xl cursor-pointer">Add Task +</h2>
         <input class="w-1/2 px-8 py-2 border border-black-300 rounded-md" type="text"
             placeholder="Rechercher une tâche...">
         <h2 class="px-5 py-3 bg-blue-600 text-white rounded-2xl cursor-pointer">Add Multiple +</h2>
@@ -20,28 +20,34 @@
         <div class="bg-white p-4 rounded shadow">
             <h3 class="border-b-4 border-red-500 pb-2 mb-8">To Do</h3>
             <div id="to-do-list" class="space-y-2"></div>
-            <div class="task-buttons flex gap-2 mt-2">
-                <button class="delete-btn bg-red-500 text-white px-3 py-1 rounded-md">Delete</button>
-                <button class="edit-btn bg-yellow-500 text-white px-3 py-1 rounded-md">Edit</button>
+            <div id="task-container">
+                <div class="task-item">
+                   
+                </div>
             </div>
-
         </div>
         
         <div class="bg-white p-4 rounded shadow">
             <h3 class="border-b-4 border-yellow-500 pb-2 mb-4">Doing</h3>
             <div id="in-progress-list" class="space-y-2"></div>
-            <div class="task-buttons flex gap-2 mt-2">
-                <button class="delete-btn bg-red-500 text-white px-3 py-1 rounded-md">Delete</button>
-                <button class="edit-btn bg-yellow-500 text-white px-3 py-1 rounded-md">Edit</button>
+            <div id="task-container">
+                <div class="task-item">
+                   
+                    
+                </div>
             </div>
+          
 
         </div>
         <div class="bg-white p-4 rounded shadow">
             <h3 class="border-b-4 border-green-500 pb-2 mb-4">Done :)</h3>
             <div id="done-list" class="space-y-2"></div>
-            <div class="task-buttons flex gap-2 mt-2">
-                <button class="delete-btn bg-red-500 text-white px-3 py-1 rounded-md">Delete</button>
-                <button class="edit-btn bg-yellow-500 text-white px-3 py-1 rounded-md">Edit</button>
+            <div id="task-container">
+                <div class="task-item">
+                  
+                   
+                </div>
+                <!-- here can i add more task  -->
             </div>
 
 
