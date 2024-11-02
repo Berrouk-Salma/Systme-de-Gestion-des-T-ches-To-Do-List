@@ -1,11 +1,15 @@
 const addTaskBtn = document.getElementById("addtask");
 const addForm = document.getElementById("task-form");
 const cancelBtn = document.getElementById("cancel");
-const toDoList = document.getElementById("to-do-list");
 const modal = document.getElementById("modal");
+const toDoList = document.getElementById("to-do-list");
 const inProgressList = document.getElementById("in-progress-list");
 const doneList = document.getElementById("done-list");
-// const taskContainer = document.getElementById('task-container');
+let todoCounter = document.getElementById("todo");
+let doingCounter = document.getElementById("Doing");
+let doneCounter = document.getElementById("done");
+
+let tasks = [];
 
 addTaskBtn.addEventListener("click", () => {
     modal.classList.remove("hidden");
@@ -13,8 +17,8 @@ addTaskBtn.addEventListener("click", () => {
 });
 
 cancelBtn.addEventListener("click", () => {
-    addForm.classList.add("hidden");
-    modal.classList.add("hidden");
+    addForm.classList.toggle("hidden");
+    modal.classList.toggle("hidden");
 });
 
 addForm.addEventListener("submit", (event) => {
@@ -25,31 +29,62 @@ addForm.addEventListener("submit", (event) => {
     const priority = document.getElementById("task-priority").value;
     const category = document.getElementById("task-category").value;
 
+    let task = {
+        title: title,
+        date: date,
+        priority: priority,
+        category: category,
+        // discription:discription,
+    };
+    tasks.unshift(task);
+
     const taskElement = document.createElement("div");
-    taskElement.classList.add("p-4", "rounded", "border", "white");
+    taskElement.classList.add("p-4", "rounded", "border", "text-white");
+    taskElement.innerHTML = `
+        <strong>Title: ${title}</strong><br>
+        <span>Date: ${date}</span><br>
+        <button class="delete-btn bg-red-500 text-white px-3 py-1 rounded-md">Delete</button>
+        <button class="edit-btn bg-yellow-500 text-white px-3 py-1 rounded-md">Edit</button>
+    `;
 
-    if (priority.includes("P1 (en rouge)")) {
-        taskElement.classList.add("bg-red-600");
-    } else if (priority.includes("P2 (en orange)")) {
-        taskElement.classList.add("bg-orange-600");
-    } else if (priority.includes("P3 (en vert)")) {
-        taskElement.classList.add("bg-green-600");
+    // Add priority class
+    switch (priority) {
+        case "P1 (en rouge)":
+            taskElement.classList.add("bg-red-600");
+            break;
+        case "P2 (en orange)":
+            taskElement.classList.add("bg-orange-600");
+            break;
+        case "P3 (en vert)":
+            taskElement.classList.add("bg-green-600");
+            break;
     }
 
-    taskElement.innerHTML = `<strong>title: ${title}</strong><br><span> date : ${date}</span>
-                            <button class="delete-btn bg-red-500 text-white px-3 py-1 rounded-md">Delete</button>
-                        <button class="edit-btn bg-yellow-500 text-white px-3 py-1 rounded-md">Edit</button>
-                            `;
-    if (category === "to-do-list") {
-        toDoList.appendChild(taskElement);
-    } else if (category === "in-progress-list") {
-        inProgressList.appendChild(taskElement);
-    } else if (category === "done-list") {
-        doneList.appendChild(taskElement);
+    // Append task to the correct category list
+    switch (category) {
+        case "to-do-list":
+            toDoList.appendChild(taskElement);
+            break;
+        case "in-progress-list":
+            inProgressList.appendChild(taskElement);
+            break;
+        case "done-list":
+            doneList.appendChild(taskElement);
+            break;
     }
+
+    // Reset the form and close the modal
     addForm.reset();
-    addForm.classList.add("hidden");
-    modal.classList.add("hidden");
+    addForm.classList.toggle("hidden");
+    modal.classList.toggle("hidden");
+
+    // Update counters
+    updateCounters();
 });
 
-
+// Function to update task counters
+function updateCounters() {
+    todoCounter.textContent = toDoList.children.length;
+    doingCounter.textContent = inProgressList.children.length;
+    doneCounter.textContent = doneList.children.length;
+}
