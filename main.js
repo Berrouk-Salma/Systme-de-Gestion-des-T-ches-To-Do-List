@@ -125,7 +125,6 @@ function addTaskToCategoryList(taskElement, category) {
 
 // Delete task and update counters
 function deleteTask(taskElement, category) {console.log(taskElement)
-debugger
     taskElement.remove();
     updateCounters();
 }
