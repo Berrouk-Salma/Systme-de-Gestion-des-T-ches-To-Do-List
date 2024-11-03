@@ -9,7 +9,8 @@ let todoCounter = document.getElementById("todo");
 let doingCounter = document.getElementById("Doing");
 let doneCounter = document.getElementById("done");
 
-let tasks = [];
+
+let tasks = []  
 
 addTaskBtn.addEventListener("click", () => {
     modal.classList.remove("hidden");
